@@ -42,8 +42,10 @@ async def main() -> None:
     ]
 
     # run the programs
-    await service.run_program(wake_up_program)
-    await service.run_program(sleep_program)
+    await asyncio.gather(
+        service.run_program(wake_up_program),
+        service.run_program(sleep_program)
+    )
 
 
 if __name__ == "__main__":
